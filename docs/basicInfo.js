@@ -1,4 +1,5 @@
 module.exports = {
+    swaggerDefinition: {
     openapi: "3.0.3", // present supported openapi version
     info: {
       title: "Simple Todos API", // short title.
@@ -10,4 +11,7 @@ module.exports = {
         url: "web.com", // your website
       },
     },
-  };
+  },
+  apis: ["app.js"]
+
+};

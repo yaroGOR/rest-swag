@@ -12,17 +12,32 @@ const userController = require("./controllers/usersController");
 const postsController = require("./controllers/postsController");
 const logger = require("./winston");
 
+const swaggerJsDoc = require('swagger-jsdoc')
+const swaggerUI = require('swagger-ui-express')
+
 dotenv.config();
 const UsersController = new userController();
 const PostsController = new postsController();
 
+
+const swaggerOptions = require('./docs/basicInfo')
+const swaggerDocs = swaggerJsDoc(swaggerOptions)
+
+
 const requestListener = async function (req, res) {
   try {
+    if(req.url ==='/' && req.method==='GET') {
+      res.send('Hello from server')
+    }
     if (req.method === "POST" || "PUT") {
       await parseBody(req);
     }
     console.log(req.body);
-
+    
+    if (req.url === '/api-docs' && req.method==='GET') {
+      swaggerUI.serve
+      swaggerUI.setup(swaggerDocs)
+    }
     //register new user
     if (req.url === "/register" && req.method === "POST") {
       UsersController.registerUser(req, res);
@@ -66,6 +81,7 @@ const requestListener = async function (req, res) {
   } catch (error) {
     console.log("main app");
     logger.error(error);
+    console.log(error)
   }
 };
 var server = http.createServer(requestListener);
