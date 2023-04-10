@@ -18,6 +18,7 @@ const parseBody = async (req)=> {
     return 
 } catch(err) {
     logger.error(err)
+    console.log( err)
     console.log('Error while parsing')
 }
 }

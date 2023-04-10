@@ -1,17 +1,13 @@
 module.exports = {
-    swaggerDefinition: {
     openapi: "3.0.3", // present supported openapi version
     info: {
-      title: "Simple Todos API", // short title.
-      description: "A simple todos API", //  desc.
+      title: "Simple REST API", // short title.
+      description: "A REST+SWAGGER API", //  desc.
       version: "1.0.0", // version number
       contact: {
-        name: "John doe", // your name
-        email: "john@web.com", // your email
-        url: "web.com", // your website
+        name: "Yaroslav Horban", // your name
+        email: "yaroslav.horban@codeit.pro", // your email
+        url: "nowebsite.com", // your website
       },
     },
-  },
-  apis: ["app.js"]
-
 };
