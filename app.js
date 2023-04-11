@@ -10,6 +10,8 @@ const Middleware = require("./middleware/jwtMiddleware");
 
 const userController = require("./controllers/usersController");
 const postsController = require("./controllers/postsController");
+const swaggerController = require('./controllers/swaggerController')
+
 const logger = require("./winston");
 const swaggerSpec = require("./docs");
 
@@ -93,9 +95,9 @@ const requestListener = async function (req, res) {
    
     //swagger route
     if (req.url === "/api-docs" && req.method === "GET") {
-      res.setHeader("Content-Type", "application/json");
-
-      res.end(JSON.stringify(swaggerSpec));
+      // res.setHeader("Content-Type", "application/json");
+swaggerController.sendView(req, res)
+      // res.end(JSON.stringify(swaggerSpec));
     }
   } catch (error) {
     console.log("main app");

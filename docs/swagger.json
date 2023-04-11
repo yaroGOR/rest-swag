@@ -1,0 +1,200 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Simple REST API",
+    "description": "A REST+SWAGGER API",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Yaroslav Horban",
+      "email": "yaroslav.horban@codeit.pro",
+      "url": "nowebsite.com"
+    }
+  },
+  "paths": {
+    "/register": {
+      "post": {
+        "tags": ["User"],
+        "description": "Register new user",
+        "produces": ["application/json"],
+        "responses": {
+          "200": [{ "description": "Register new user" }],
+          "500": [{ "description": "Server Error" }]
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": ["User"],
+        "description": "Login  user",
+        "produces": ["application/json"],
+        "responses": {
+          "200": [
+            { "description": "Login  user and return jwt token if success" }
+          ],
+          "500": [{ "description": "Server Error or wrong password" }]
+        }
+      }
+    },
+    "/posts": {
+      "post": {
+        "tags": ["Post"],
+        "description": "Create new post",
+        "produces": ["application/json"],
+        "responses": {
+          "200": [
+            {
+              "description": "New post created",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/definitions/Post" }
+                }
+              }
+            }
+          ],
+          "500": [{ "description": "Server Error" }]
+        }
+      }
+    },
+    "/posts/{postID}": {
+      "put": {
+        "summary": "Update post.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "postID",
+            "required": true,
+            "description": "Numeric ID of the post",
+            "schema": { "type": "integer" }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": [
+            {
+              "description": "Post updated",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/definitions/Post" }
+                }
+              }
+            }
+          ],
+          "500": [{ "description": "Server error" }]
+        }
+      },
+      "get": {
+        "tags": ["Post"],
+        "description": "Get post by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "postID",
+            "required": true,
+            "description": "Numeric ID of the post",
+            "schema": { "type": "integer" }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": [
+            {
+              "description": "Post",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/definitions/Post" }
+                }
+              }
+            }
+          ],
+          "500": [{ "description": "Server error" }]
+        }
+      },
+      "delete": {
+        "tags": ["Post"],
+        "description": "Update post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "postID",
+            "required": true,
+            "description": "Numeric ID of the post",
+            "schema": { "type": "integer" }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": [
+            {
+              "description": "Post deleted",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/definitions/Post" }
+                }
+              }
+            }
+          ],
+          "500": [{ "description": "Server error" }]
+        }
+      }
+    },
+    "/posts/{postTitle}": {
+      "put": {
+        "tags": ["Post"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "postTitle",
+            "required": true,
+            "description": "Title of the post",
+            "schema": { "type": "string" }
+          }
+        ],
+        "produces": "application/json",
+        "responses": {
+          "200": [
+            {
+              "description": "Post",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/definitions/Post" }
+                }
+              }
+            }
+          ],
+          "500": [{ "description": "Server error" }]
+        }
+      }
+    },
+    "/api-docs": {
+      "get": {
+        "tags": ["Api"],
+        "description": "Get api docs",
+        "produces": ["application/json"],
+        "responses": {
+          "200": [
+            {
+              "description": "View API docs",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/definitions/Post" }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Post": {
+      "properties": {
+        "title": { "type": "string" },
+        "author": { "type": "string" },
+        "content": { "type": "string" },
+        "post_id": { "type": "integer" }
+      }
+    }
+  },
+  "components": {},
+  "tags": []
+}
