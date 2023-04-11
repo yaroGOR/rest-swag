@@ -3,7 +3,7 @@ const definition = require('./basicInfo')
 
 const options = {
     swaggerDefinition: definition,
-    apis: ["./app.js"],
+    apis: ["./docs/swaggerDocs.js"],
 
 }
 
