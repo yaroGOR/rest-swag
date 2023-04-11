@@ -15,10 +15,29 @@
       "post": {
         "tags": ["User"],
         "description": "Register new user",
+        "requestBody": {
+          "description": "User schema",
+          "required": true
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        },
         "produces": ["application/json"],
         "responses": {
-          "200": [{ "description": "Register new user" }],
-          "500": [{ "description": "Server Error" }]
+          "200": [
+            {
+              "description": "Register new user"
+            }
+          ],
+          "500": [
+            {
+              "description": "Server Error"
+            }
+          ]
         }
       }
     },
@@ -26,12 +45,37 @@
       "post": {
         "tags": ["User"],
         "description": "Login  user",
+        "requestBody": {
+          "description": "User schema",
+          "required": true
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        },
         "produces": ["application/json"],
         "responses": {
           "200": [
-            { "description": "Login  user and return jwt token if success" }
+            {
+              "description": "Login  user and return jwt token if success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "description": "JWT token",
+                    "type": "string"
+                  }
+                }
+              }
+            }
           ],
-          "500": [{ "description": "Server Error or wrong password" }]
+          "500": [
+            {
+              "description": "Server Error or wrong password"
+            }
+          ]
         }
       }
     },
@@ -46,12 +90,18 @@
               "description": "New post created",
               "content": {
                 "application/json": {
-                  "schema": { "$ref": "#/definitions/Post" }
+                  "schema": {
+                    "$ref": "#/definitions/Post"
+                  }
                 }
               }
             }
           ],
-          "500": [{ "description": "Server Error" }]
+          "500": [
+            {
+              "description": "Server Error"
+            }
+          ]
         }
       }
     },
@@ -64,7 +114,9 @@
             "name": "postID",
             "required": true,
             "description": "Numeric ID of the post",
-            "schema": { "type": "integer" }
+            "schema": {
+              "type": "integer"
+            }
           }
         ],
         "produces": ["application/json"],
@@ -74,12 +126,18 @@
               "description": "Post updated",
               "content": {
                 "application/json": {
-                  "schema": { "$ref": "#/definitions/Post" }
+                  "schema": {
+                    "$ref": "#/definitions/Post"
+                  }
                 }
               }
             }
           ],
-          "500": [{ "description": "Server error" }]
+          "500": [
+            {
+              "description": "Server error"
+            }
+          ]
         }
       },
       "get": {
@@ -91,7 +149,9 @@
             "name": "postID",
             "required": true,
             "description": "Numeric ID of the post",
-            "schema": { "type": "integer" }
+            "schema": {
+              "type": "integer"
+            }
           }
         ],
         "produces": ["application/json"],
@@ -101,12 +161,18 @@
               "description": "Post",
               "content": {
                 "application/json": {
-                  "schema": { "$ref": "#/definitions/Post" }
+                  "schema": {
+                    "$ref": "#/definitions/Post"
+                  }
                 }
               }
             }
           ],
-          "500": [{ "description": "Server error" }]
+          "500": [
+            {
+              "description": "Server error"
+            }
+          ]
         }
       },
       "delete": {
@@ -118,7 +184,9 @@
             "name": "postID",
             "required": true,
             "description": "Numeric ID of the post",
-            "schema": { "type": "integer" }
+            "schema": {
+              "type": "integer"
+            }
           }
         ],
         "produces": ["application/json"],
@@ -128,12 +196,18 @@
               "description": "Post deleted",
               "content": {
                 "application/json": {
-                  "schema": { "$ref": "#/definitions/Post" }
+                  "schema": {
+                    "$ref": "#/definitions/Post"
+                  }
                 }
               }
             }
           ],
-          "500": [{ "description": "Server error" }]
+          "500": [
+            {
+              "description": "Server error"
+            }
+          ]
         }
       }
     },
@@ -146,7 +220,9 @@
             "name": "postTitle",
             "required": true,
             "description": "Title of the post",
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "produces": "application/json",
@@ -156,12 +232,18 @@
               "description": "Post",
               "content": {
                 "application/json": {
-                  "schema": { "$ref": "#/definitions/Post" }
+                  "schema": {
+                    "$ref": "#/definitions/Post"
+                  }
                 }
               }
             }
           ],
-          "500": [{ "description": "Server error" }]
+          "500": [
+            {
+              "description": "Server error"
+            }
+          ]
         }
       }
     },
@@ -176,7 +258,9 @@
               "description": "View API docs",
               "content": {
                 "application/json": {
-                  "schema": { "$ref": "#/definitions/Post" }
+                  "schema": {
+                    "$ref": "#/definitions/Post"
+                  }
                 }
               }
             }
@@ -188,10 +272,28 @@
   "definitions": {
     "Post": {
       "properties": {
-        "title": { "type": "string" },
-        "author": { "type": "string" },
-        "content": { "type": "string" },
-        "post_id": { "type": "integer" }
+        "title": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "post_id": {
+          "type": "integer"
+        }
+      }
+    },
+    "User": {
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
       }
     }
   },

@@ -1,7 +1,21 @@
 /**
  * @swagger
  * definitions:
+ *   PostRequest:
+ *     type: object
+ *     properties:
+ *       title:
+ *         type: string
+ *       author:
+ *         type: string
+ *       content:
+ *         type: string
+ */
+/**
+ * @swagger
+ * definitions:
  *   Post:
+ *     type: object
  *     properties:
  *       title:
  *         type: string
@@ -15,18 +29,37 @@
 
 /**
  * @swagger
+ * definitions:
+ *   type: object
+ *   User:
+ *     properties:
+ *       username:
+ *         type: string
+ *       password:
+ *         type: string
+ */
+
+/**
+ * @swagger
  *  /register:
  *   post:
  *     tags:
  *       - User
- *     description: Register new user
+ *     description: register user
+ *     requestBody:
+ *      description: User schema
+ *      required: true
+ *      content:
+ *       application/json:
+ *        schema:
+ *         $ref: '#/definitions/User'
  *     produces:
  *       - application/json
  *     responses:
  *       200:
- *        - description: Register new user
+ *          description: Register new user
  *       500:
- *        - description: Server Error
+ *          description: Server Error
  */
 
 /**
@@ -36,13 +69,25 @@
  *     tags:
  *       - User
  *     description: Login  user
+ *     requestBody:
+ *      description: User schema
+ *      required: true
+ *      content:
+ *       application/json:
+ *        schema:
+ *         $ref: '#/definitions/User'
  *     produces:
  *       - application/json
  *     responses:
  *       200:
- *        - description: Login  user and return jwt token if success
+ *          description: Login  user and return jwt token if success
+ *          content:
+ *           application/json:
+ *             schema:
+ *               description: JWT token
+ *               type: string
  *       500:
- *        - description: Server Error or wrong password
+ *          description: Server Error or wrong password
  */
 
 /**
@@ -52,23 +97,29 @@
  *     tags:
  *       - Post
  *     description: Create new post
+ *     requestBody:
+ *      description: Post schema
+ *      required: true
+ *      content:
+ *       application/json:
+ *        schema:
+ *         $ref: '#/definitions/PostRequest'
  *     produces:
  *       - application/json
  *     responses:
  *       200:
- *        - description:  New post created
+ *          description:  New post created
  *          content:
  *           application/json:
  *             schema:
  *               $ref: '#/definitions/Post'
  *       500:
- *        - description: Server Error
+ *          description: Server Error
  */
 /**
  * @swagger
  *  /posts/{postID}:
  *   put:
- *     summary: Update post.
  *     parameters:
  *       - in: path
  *         name: postID
@@ -76,17 +127,24 @@
  *         description: Numeric ID of the post
  *         schema:
  *           type: integer
+ *     requestBody:
+ *       description: Post schema
+ *       required: true
+ *       content:
+ *        application/json:
+ *         schema:
+ *          $ref: '#/definitions/PostRequest'
  *     produces:
  *       - application/json
  *     responses:
  *       200:
- *        - description: Post updated
+ *          description: Post updated
  *          content:
  *           application/json:
  *             schema:
  *               $ref: '#/definitions/Post'
  *       500:
- *         - description: Server error
+ *           description: Server error
  */
 
 /**
@@ -107,13 +165,13 @@
  *       - application/json
  *     responses:
  *       200:
- *        - description: Post
+ *          description: Post
  *          content:
  *           application/json:
  *             schema:
  *               $ref: '#/definitions/Post'
  *       500:
- *         - description: Server error
+ *           description: Server error
  */
 
 /**
@@ -134,19 +192,15 @@
  *       - application/json
  *     responses:
  *       200:
- *        - description: Post deleted
- *          content:
- *           application/json:
- *             schema:
- *               $ref: '#/definitions/Post'
+ *          description: Post deleted
  *       500:
- *         - description: Server error
+ *           description: Server error
  */
 
 /**
  * @swagger
  *  /posts/{postTitle}:
- *   put:
+ *   get:
  *     tags:
  *       - Post
  *     parameters:
@@ -160,13 +214,13 @@
  *        application/json
  *     responses:
  *       200:
- *        - description: Post
- *          content:
+ *           description: Post
+ *           content:
  *           application/json:
  *             schema:
  *               $ref: '#/definitions/Post'
  *       500:
- *         - description: Server error
+ *           description: Server error
  */
 
 /**
@@ -180,9 +234,5 @@
  *       - application/json
  *     responses:
  *       200:
- *        - description: View API docs
- *          content:
- *           application/json:
- *             schema:
- *               $ref: '#/definitions/Post'
+ *          description: View API docs
  */

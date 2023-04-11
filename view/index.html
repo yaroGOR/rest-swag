@@ -1,3 +1,4 @@
+<!doctype html>
 <html>
   <head>
     <title>Simple REST API</title>
@@ -205,7 +206,7 @@
   <li><a href="#postsPost"><code><span class="http-method">post</span> /posts</code></a></li>
   <li><a href="#postsPostIDDelete"><code><span class="http-method">delete</span> /posts/{postID}</code></a></li>
   <li><a href="#postsPostIDGet"><code><span class="http-method">get</span> /posts/{postID}</code></a></li>
-  <li><a href="#postsPostTitlePut"><code><span class="http-method">put</span> /posts/{postTitle}</code></a></li>
+  <li><a href="#postsPostTitleGet"><code><span class="http-method">get</span> /posts/{postTitle}</code></a></li>
   </ul>
   <h4><a href="#User">User</a></h4>
   <ul>
@@ -233,6 +234,9 @@
 
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    View API docs
+        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="Default">Default</a></h1>
@@ -240,7 +244,7 @@
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="put"><code class="huge"><span class="http-method">put</span> /posts/{postID}</code></pre></div>
-    <div class="method-summary">Update post. (<span class="nickname">postsPostIDPut</span>)</div>
+    <div class="method-summary"> (<span class="nickname">postsPostIDPut</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
@@ -249,17 +253,42 @@
       
             <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Numeric ID of the post </div>    </div>  <!-- field-items -->
 
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
 
 
 
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      #/definitions/Post
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>"{}"</code></pre>
 
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Post updated
+        <a href="##/definitions/Post">#/definitions/Post</a>
+    <h4 class="field-label">500</h4>
+    Server error
+        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="Post">Post</a></h1>
@@ -271,17 +300,42 @@
     <div class="method-notes">Create new post</div>
 
 
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
 
 
 
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      #/definitions/Post
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>"{}"</code></pre>
 
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    New post created
+        <a href="##/definitions/Post">#/definitions/Post</a>
+    <h4 class="field-label">500</h4>
+    Server Error
+        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="postsPostIDDelete"></a>
@@ -308,6 +362,12 @@
 
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Post deleted
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Server error
+        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="postsPostIDGet"></a>
@@ -328,19 +388,39 @@
 
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      #/definitions/Post
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>"{}"</code></pre>
 
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Post
+        <a href="##/definitions/Post">#/definitions/Post</a>
+    <h4 class="field-label">500</h4>
+    Server error
+        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="postsPostTitlePut"></a>
+  <div class="method"><a name="postsPostTitleGet"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="put"><code class="huge"><span class="http-method">put</span> /posts/{postTitle}</code></pre></div>
-    <div class="method-summary"> (<span class="nickname">postsPostTitlePut</span>)</div>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /posts/{postTitle}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">postsPostTitleGet</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
@@ -360,6 +440,12 @@
 
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Post
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Server error
+        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="User">User</a></h1>
@@ -371,17 +457,42 @@
     <div class="method-notes">Login  user</div>
 
 
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
 
 
 
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      String
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>""</code></pre>
 
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Login  user and return jwt token if success
+        <a href="#String">String</a>
+    <h4 class="field-label">500</h4>
+    Server Error or wrong password
+        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="registerPost"></a>
@@ -389,9 +500,14 @@
     <a class="up" href="#__Methods">Up</a>
     <pre class="post"><code class="huge"><span class="http-method">post</span> /register</code></pre></div>
     <div class="method-summary"> (<span class="nickname">registerPost</span>)</div>
-    <div class="method-notes">Register new user</div>
+    <div class="method-notes">register user</div>
 
 
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
 
 
 
@@ -403,6 +519,12 @@
 
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Register new user
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Server Error
+        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
 
